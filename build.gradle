@@ -1,0 +1,14 @@
+buildscript {
+    repositories {
+        maven {
+            url 'http://maven.aliyun.com/nexus/content/groups/public/'
+        }
+    }
+
+}
+
+configure(allprojects) { project ->
+    apply plugin: 'java-library'
+    group 'com.peony.blackdata'
+    dependencies {}
+}

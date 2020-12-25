@@ -1,0 +1,45 @@
+
+buildscript {
+    // 构建阶段
+    ext {
+        springBootVersion = '2.4.1'
+    }
+
+    repositories {
+
+        maven {url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+    }
+
+    dependencies {
+        // 构建阶段: spring依赖管理插件
+        classpath('io.spring.gradle:dependency-management-plugin:1.0.6.RELEASE')
+    }
+}
+
+sourceCompatibility = 1.8
+
+apply plugin: 'java'
+
+configure(allprojects) { project ->
+    apply plugin: 'java-library'
+    apply plugin: 'io.spring.dependency-management'
+
+    //
+    repositories {
+        mavenLocal()
+        maven {url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+    }
+
+    dependencies {
+
+        implementation("com.peony.blackdata:black-data-api:0.0.1")
+        implementation("com.alibaba.boot:nacos-config-spring-boot-starter:0.2.4")
+
+
+    }
+
+}
+
+
+version '001'
+

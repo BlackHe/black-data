@@ -1,0 +1,40 @@
+
+
+buildscript {
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath('com.netflix.nebula:nebula-publishing-plugin:8.1.0')
+    }
+
+}
+
+apply plugin: 'java'
+apply plugin: 'maven' // 引入maven插件
+apply plugin: 'maven-publish'
+
+
+group = 'com.peony.blackdata' // 会按照group生成.m2下的目录路径
+version '0.0.1' // 指定版本
+
+sourceCompatibility = 1.8
+
+publishing{
+    publications{
+        mavenJava(MavenPublication){
+            groupId 'com.peony.blackdata'
+            artifactId 'black-data-api'
+            version '0.0.1'
+            from components.java
+        }
+    }
+
+    repositories {
+        mavenLocal()
+    }
+}
+

@@ -1,0 +1,12 @@
+spring:
+  cloud:
+    nacos:
+      config:
+        server-addr: localhost:8848
+        namespace: peony
+        file-extention: yml
+  application:
+    name: blackdata-nacos
+
+server:
+  port: 8080
