@@ -1,15 +1,46 @@
-plugins {
-    id 'java'
-}
 
-version 'unspecified'
+buildscript {
+    // 构建阶段
+    ext {
+        springBootVersion = '2.4.1'
+    }
+
+    repositories {
+
+        maven {url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+    }
+
+    dependencies {
+        // 构建阶段: spring依赖管理插件
+        classpath('io.spring.gradle:dependency-management-plugin:1.0.6.RELEASE')
+    }
+}
 
 sourceCompatibility = 1.8
 
-repositories {
-    mavenCentral()
+apply plugin: 'java'
+
+configure(allprojects) { project ->
+    apply plugin: 'java-library'
+    apply plugin: 'io.spring.dependency-management'
+
+    //
+    repositories {
+        mavenLocal()
+        maven {url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+    }
+
+    dependencies {
+
+        implementation("com.peony.blackdata:black-data-api:0.0.1")
+        compile group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: '2.1.4'
+        compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.22'
+
+
+    }
+
 }
 
-dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-}
+
+version '001'
+
