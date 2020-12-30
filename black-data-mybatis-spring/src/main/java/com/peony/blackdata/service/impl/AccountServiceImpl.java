@@ -14,7 +14,6 @@ public class AccountServiceImpl implements AccountService {
     private AccountBalanceDao accountBalanceDao;
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void updateAccountBalance() {
         System.out.println("更新账户余额");
         accountBalanceDao.updateAccountBalance();
